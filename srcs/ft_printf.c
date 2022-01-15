@@ -6,11 +6,12 @@
 /*   By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 14:48:28 by ldamiens          #+#    #+#             */
-/*   Updated: 2022/01/14 15:38:49 by ldamiens         ###   ########.fr       */
+/*   Updated: 2022/01/15 13:24:27 by ldamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_resolve(char character, va_list list)
 {
@@ -19,15 +20,17 @@ int	ft_resolve(char character, va_list list)
 	if (character == 's')
 		return (ft_putstr(va_arg(list, char *)));
 	if (character == 'p')
-		return (ft_putnbr_base_uint(va_arg(list, unsigned long long), "0123456789abcdef"));
+		return (ft_print_ptr(va_arg(list, unsigned long long)));
 	if (character == 'd')
-		return (ft_putnbr_base(va_arg(list, int), "0123456789"));
+		return (ft_putnbr(va_arg(list, int)));
 	if (character == 'i')
 		return (ft_putnbr(va_arg(list, int)));
 	if (character == 'u')
 		return (ft_putnbr_base_uint((unsigned int)va_arg(list, int *), "0123456789"));
 	if (character == 'x')
-		return (ft_putnbr_base(va_arg(list, int), "0123456789ABCDEF"));
+		return (ft_print_hexa(va_arg(list, unsigned int), 0));
+	if (character == 'X')
+		return (ft_print_hexa(va_arg(list, unsigned int), 1));
 	if (character == '%')
 		return (ft_putchar('%'));
 	return (0);

@@ -6,7 +6,7 @@
 #    By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 14:05:24 by ldamiens          #+#    #+#              #
-#    Updated: 2022/01/14 15:25:28 by ldamiens         ###   ########.fr        #
+#    Updated: 2022/01/15 09:38:49 by ldamiens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC				= 	utils/ft_putchar.c \
 #-------- Objects --------#
 
 OBJECT 			= $(addprefix $(PATH_OBJECT)/, $(SRC:.c=.o))
+SOURCE			= $(addprefix $(PATH_SOURCE)/, $(SRC));
 
 #-------- Includes --------#
 
@@ -60,6 +61,9 @@ bonus 	:			$(OBJECT) $(OBJECT_BONUS)
 $(PATH_OBJECT)/%.o 	:	$(PATH_SOURCE)/%.c $(INCLUDE) $(MAKEFILE)
 							@mkdir -p $(@D)
 							$(CC) $(FLAGS) -I $(PATH_INCLUDE) -c $< -o $@
+
+test	: $(SOURCE)
+	$(CC) $(FLAGS) -I $(PATH_INCLUDE) $^ -o $@ 
 
 #-------- Clean --------#
 

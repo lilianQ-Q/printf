@@ -6,7 +6,7 @@
 /*   By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 14:44:10 by ldamiens          #+#    #+#             */
-/*   Updated: 2022/01/14 15:22:46 by ldamiens         ###   ########.fr       */
+/*   Updated: 2022/01/15 13:20:24 by ldamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_putstr(const char *string)
 	int	index;
 
 	index = 0;
+	if (!string)
+		return (ft_putstr("(null)"));
 	while (string[index])
 	{
 		ft_putchar(string[index]);
