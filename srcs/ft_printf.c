@@ -6,13 +6,13 @@
 /*   By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 14:48:28 by ldamiens          #+#    #+#             */
-/*   Updated: 2022/01/17 09:31:58 by ldamiens         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:15:52 by ldamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-const int	ft_resolve(char character, va_list list)
+static int	ft_resolve(char character, va_list list)
 {
 	if (character == 'c')
 		return (ft_putchar(va_arg(list, int)));

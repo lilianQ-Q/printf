@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   test_unsigned.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 14:44:40 by ldamiens          #+#    #+#             */
-/*   Updated: 2022/01/17 10:08:13 by ldamiens         ###   ########.fr       */
+/*   Created: 2022/01/17 09:23:13 by ldamiens          #+#    #+#             */
+/*   Updated: 2022/01/17 10:16:01 by ldamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_putnbr(int n)
+void	test_unsigned(void)
 {
-	int	count;
-
-	count = 0;
-	if (n == -2147483648)
-		return (ft_putstr("-2147483648"));
-	if (n < 0)
-	{
-		n = -n;
-		count += ft_putchar('-');
-	}
-	if (n >= 10)
-	{
-		count += ft_putnbr(n / 10);
-		count += ft_putnbr(n % 10);
-	}
-	else
-		count += ft_putchar(n + 48);
-	return (count);
+	ft_putstr("testing unsigned - work in progress");
 }

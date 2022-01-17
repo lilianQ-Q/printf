@@ -6,7 +6,7 @@
 #    By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 14:05:24 by ldamiens          #+#    #+#              #
-#    Updated: 2022/01/15 09:38:49 by ldamiens         ###   ########.fr        #
+#    Updated: 2022/01/17 10:18:39 by ldamiens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,13 @@ PATH_OBJECT 	= objs
 
 SRC				= 	utils/ft_putchar.c \
 					utils/ft_putnbr_base.c \
+					utils/ft_putnbr_base_uint.c \
 					utils/ft_putnbr.c \
 					utils/ft_putstr.c  \
 					utils/ft_strlen.c \
+					printer/printer_hexa.c \
+					printer/printer_uint.c \
+					checker/ft_check_base.c \
 					ft_printf.c
 
 #-------- Objects --------#
@@ -55,8 +59,8 @@ all 	:	$(NAME)
 $(NAME) :		$(OBJECT)
 					$(LIBC) $(NAME) $(OBJECT)
 
-bonus 	:			$(OBJECT) $(OBJECT_BONUS)
-						$(LIBC) $(NAME) $(OBJECT) $(OBJECT_BONUS)
+bonus 	:			$(OBJECT)
+						$(LIBC) $(NAME) $(OBJECT)
 
 $(PATH_OBJECT)/%.o 	:	$(PATH_SOURCE)/%.c $(INCLUDE) $(MAKEFILE)
 							@mkdir -p $(@D)
@@ -68,7 +72,7 @@ test	: $(SOURCE)
 #-------- Clean --------#
 
 clean	:
-	$(RM) $(OBJECT) $(OBJECT_BONUS)
+	$(RM) $(OBJECT)
 
 fclean	: clean
 	$(RM) $(NAME)

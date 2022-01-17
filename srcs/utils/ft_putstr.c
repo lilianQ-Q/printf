@@ -6,11 +6,11 @@
 /*   By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 14:44:10 by ldamiens          #+#    #+#             */
-/*   Updated: 2022/01/17 09:15:26 by ldamiens         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:08:16 by ldamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putstr(const char *string)
 {
