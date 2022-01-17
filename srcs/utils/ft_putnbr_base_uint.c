@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base_uint.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 14:44:40 by ldamiens          #+#    #+#             */
-/*   Updated: 2022/01/17 09:15:23 by ldamiens         ###   ########.fr       */
+/*   Created: 2022/01/17 09:14:52 by ldamiens          #+#    #+#             */
+/*   Updated: 2022/01/17 09:15:13 by ldamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_putnbr(int n)
+int	ft_putnbr_base_uint(unsigned long long number, const char *base)
 {
+	int	size_base;
+	int	final[100];
+	int	index;
 	int	count;
 
+	index = 0;
+	size_base = 0;
 	count = 0;
-	if (n == -2147483648)
-		return (ft_putstr("-2147483648"));
-	if (n < 0)
+	if (ft_check_base(base))
 	{
-		n = -n;
-		count += ft_putchar('-');
+		while (base[size_base])
+			size_base++;
+		if (number == 0)
+			return (ft_putchar(base[0]));
+		while (number)
+		{
+			final[index] = number % size_base;
+			number = number / size_base;
+			index++;
+		}
+		while (--index >= 0)
+			count += ft_putchar(base[final[index]]);
 	}
-	if (n >= 10)
-	{
-		count += ft_putnbr(n / 10);
-		count += ft_putnbr(n % 10);
-	}
-	else
-		count += ft_putchar(n + 48);
 	return (count);
 }

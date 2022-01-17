@@ -6,14 +6,13 @@
 /*   By: ldamiens <ldamiens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 14:48:28 by ldamiens          #+#    #+#             */
-/*   Updated: 2022/01/15 13:24:27 by ldamiens         ###   ########.fr       */
+/*   Updated: 2022/01/17 09:31:58 by ldamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "printf.h"
 
-int	ft_resolve(char character, va_list list)
+const int	ft_resolve(char character, va_list list)
 {
 	if (character == 'c')
 		return (ft_putchar(va_arg(list, int)));
@@ -26,11 +25,11 @@ int	ft_resolve(char character, va_list list)
 	if (character == 'i')
 		return (ft_putnbr(va_arg(list, int)));
 	if (character == 'u')
-		return (ft_putnbr_base_uint((unsigned int)va_arg(list, int *), "0123456789"));
+		return (ft_print_unsigned((unsigned int)va_arg(list, int *)));
 	if (character == 'x')
-		return (ft_print_hexa(va_arg(list, unsigned int), 0));
+		return (ft_print_hexa_lower(va_arg(list, unsigned int)));
 	if (character == 'X')
-		return (ft_print_hexa(va_arg(list, unsigned int), 1));
+		return (ft_print_hexa_upper(va_arg(list, unsigned int)));
 	if (character == '%')
 		return (ft_putchar('%'));
 	return (0);
